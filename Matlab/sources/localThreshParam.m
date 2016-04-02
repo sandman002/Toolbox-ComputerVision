@@ -1,0 +1,36 @@
+function param = localThreshParam()
+
+    d = dialog('Position',[300 300 250 180],'Name','Local Thresholding');
+    txt = uicontrol('Parent',d,...
+           'Style','text',...
+           'Position',[20 100 210 40],...
+           'String','Kernel Size');
+    KSize =  uicontrol('Parent', d, 'Style','edit',...
+             'Position', [75 90 100 25],'String','7', 'Callback', @meanValue)
+
+    txt2 = uicontrol('Parent',d,...
+           'Style','text',...
+           'Position',[25 70 210 20],...
+            'String','tune');
+        
+    var =  uicontrol('Parent', d, 'Style','edit',...
+             'Position', [75 50 100 25],'String','9', 'Callback', @varValue)
+
+          
+    btn = uicontrol('Parent',d,...
+           'Position',[89 20 70 25],...
+           'String','Apply',...
+           'Callback','delete(gcf)');
+   param = [7 9];
+   
+    % Wait for d to close before running to completion
+    uiwait(d);
+    
+    function [] = meanValue(kSize, callbackdata)
+      param(1) = str2num(get(kSize, 'string'));
+    end
+
+    function [] = varValue(kSize, callbackdata)
+      param(2) = str2num(get(kSize, 'string'));
+    end
+end

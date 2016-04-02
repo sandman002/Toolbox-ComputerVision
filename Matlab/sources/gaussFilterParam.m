@@ -1,0 +1,36 @@
+function param = gaussFilterParam()
+
+    d = dialog('Position',[300 300 250 180],'Name','Gaussian Filter parameters');
+    txt = uicontrol('Parent',d,...
+           'Style','text',...
+           'Position',[20 100 210 40],...
+           'String','Kernel Size');
+    KSize =  uicontrol('Parent', d, 'Style','edit',...
+             'Position', [75 90 100 25],'String','0', 'Callback', @meanValue)
+
+    txt2 = uicontrol('Parent',d,...
+           'Style','text',...
+           'Position',[25 70 210 20],...
+            'String','Variance');
+        
+    var =  uicontrol('Parent', d, 'Style','edit',...
+             'Position', [75 50 100 25],'String','0', 'Callback', @varValue)
+
+          
+    btn = uicontrol('Parent',d,...
+           'Position',[89 20 70 25],...
+           'String','Close',...
+           'Callback','delete(gcf)');
+   param = [0 0];
+   
+    % Wait for d to close before running to completion
+    uiwait(d);
+    
+    function [] = meanValue(kSize, callbackdata)
+      param(1) = str2num(get(kSize, 'string'));
+    end
+
+    function [] = varValue(kSize, callbackdata)
+      param(2) = str2num(get(kSize, 'string'));
+    end
+end
