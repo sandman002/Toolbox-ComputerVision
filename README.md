@@ -1,3 +1,7 @@
+### Computer vision toolbox
+
+A sophisticated GUI (photoshop like) for OpenCV's image processing functions. You can open multiple images and edit them via multiple functions and save every instances. The GUI alss provides a matlab like command interface to run basic image processing functions. You can track the pipeline and remove any function withing it. It also provides camera calibration and pose estimation functions.
+
 #Computer Vision toolbox in
  - C++(OpenCV/OpenGL/QT)
  - MATLAB
